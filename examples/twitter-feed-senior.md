@@ -55,6 +55,8 @@ Out of scope:
 
 This wireframe makes the home feed surface concrete before moving into architecture, pagination, and caching.
 
+![Twitter feed senior mobile UI wireframe](../assets/ui/twitter-feed-senior.png)
+
 ```mermaid
 flowchart TB
     subgraph Phone["Mobile Screen: Home Feed"]
