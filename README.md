@@ -98,28 +98,35 @@ Use the [template](templates/mobile-system-design-template.md) to practice compl
     └── mobile-system-overview.md
 ```
 
-## Hosting on GitHub
+## Contributing
 
-The simplest publishing path is to create a GitHub repository and push this folder as-is. GitHub renders Markdown files directly, including Mermaid diagrams.
+Contributions are welcome. Any contributor can fork the repository, create a branch, and raise a pull request.
 
-Suggested repo name:
-
-```text
-mobile-system-design-android-senior-staff
-```
-
-Basic setup:
+Contributor workflow:
 
 ```bash
-git init
+git clone https://github.com/alokomkar/SystemDesign.git
+cd SystemDesign
+git checkout -b add-new-system-design-example
 git add .
-git commit -m "Add mobile system design tutorial"
-git branch -M main
-git remote add origin git@github.com:<your-user>/mobile-system-design-android-senior-staff.git
-git push -u origin main
+git commit -m "Add new mobile system design example"
+git push origin add-new-system-design-example
 ```
 
-Optional: enable GitHub Pages with the repository root as the source if you want a browsable tutorial site.
+Then open a pull request from your branch to the main repository.
+
+Good PRs include:
+
+- New mobile system design examples.
+- Senior vs staff-level interview walkthroughs.
+- Better architecture diagrams or Mermaid flowcharts.
+- Corrections that improve technical accuracy.
+- Android-specific tradeoffs, APIs, storage models, or testing strategies.
+- Improvements to existing examples for clarity, structure, or completeness.
+
+Please keep contributions practical and explicit. The goal is to teach engineering judgment, not to collect buzzwords.
+
+For example structure and contribution guidance, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Suggested Practice Problems
 
