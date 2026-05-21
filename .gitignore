@@ -1,0 +1,10 @@
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Generated
+build/
+dist/
+out/
+
