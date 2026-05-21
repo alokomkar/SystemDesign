@@ -32,7 +32,8 @@ Staff-level design answers should show that you can operate across this full sys
 4. [Non-Functional Requirements](modules/04-non-functional-requirements.md)
 5. [Staff-Level Design Answer Framework](modules/05-staff-answer-framework.md)
 6. [Example: Offline-First Notes App](examples/offline-first-notes.md)
-7. [Design Template](templates/mobile-system-design-template.md)
+7. [Practice Scenario: WhatsApp Message Sync](examples/whatsapp-message-sync.md)
+8. [Design Template](templates/mobile-system-design-template.md)
 
 ## The Staff Engineer Bar
 
@@ -72,7 +73,8 @@ Use the [template](templates/mobile-system-design-template.md) to practice compl
 │   ├── 04-non-functional-requirements.md
 │   └── 05-staff-answer-framework.md
 ├── examples/
-│   └── offline-first-notes.md
+│   ├── offline-first-notes.md
+│   └── whatsapp-message-sync.md
 ├── templates/
 │   └── mobile-system-design-template.md
 └── diagrams/
@@ -104,7 +106,7 @@ Optional: enable GitHub Pages with the repository root as the source if you want
 
 ## Suggested Practice Problems
 
-- Design WhatsApp message sync.
+- [Design WhatsApp message sync.](examples/whatsapp-message-sync.md)
 - Design Google Photos upload and backup.
 - Design Uber live ride tracking.
 - Design Netflix downloads for offline playback.
