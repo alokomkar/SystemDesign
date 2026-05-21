@@ -57,33 +57,6 @@ This wireframe makes the home feed surface concrete before moving into architect
 
 ![Twitter feed senior mobile UI wireframe](../assets/ui/twitter-feed-senior.png)
 
-```mermaid
-flowchart TB
-    subgraph Phone["Mobile Screen: Home Feed"]
-        direction TB
-        Status["9:41                     5G 100%"]
-        Header["Profile        For You | Following        Search"]
-        Composer["What's happening?"]
-        Refresh["12 new posts"]
-        Post1["Asha @asha\nText post preview over two lines\nReply  Repost  Like  Share"]
-        MediaPost["Mobile Eng @mobile\nImage grid / video preview\nReply  Repost  Like  Share"]
-        QuotePost["Priya reposted\nQuoted post card with parent context"]
-        Promoted["Promoted\nApp install card with media and CTA"]
-        Loading["Loading more... / Retry"]
-        Nav["Home        Search        Notifications        Messages"]
-    end
-
-    Status --> Header
-    Header --> Composer
-    Composer --> Refresh
-    Refresh --> Post1
-    Post1 --> MediaPost
-    MediaPost --> QuotePost
-    QuotePost --> Promoted
-    Promoted --> Loading
-    Loading --> Nav
-```
-
 Feed UI states to cover in an interview:
 
 - Cached feed while refresh is running.

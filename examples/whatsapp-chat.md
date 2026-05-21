@@ -95,33 +95,6 @@ These wireframes are intentionally simple. Their job is to make the product surf
 
 ![WhatsApp chats list mobile UI wireframe](../assets/ui/whatsapp-chats-list.png)
 
-```mermaid
-flowchart TB
-    subgraph Phone["Mobile Screen: Chats"]
-        direction TB
-        Status["9:41                     5G 100%"]
-        AppBar["WhatsApp             Camera Search Menu"]
-        Tabs["CHATS              UPDATES              CALLS"]
-        Archive["Archived"]
-        Row1["Alice                    10:42\nLast message preview                 2"]
-        Row2["Android Study Group       9:30\nDraft: sync diagram              muted"]
-        Row3["Bob                       Tue\nPhoto message                  double check"]
-        Row4["Design Crew               Mon\nYou: see architecture diagram"]
-        Spacer[" "]
-        Bottom["New Chat Action Button"]
-    end
-
-    Status --> AppBar
-    AppBar --> Tabs
-    Tabs --> Archive
-    Archive --> Row1
-    Row1 --> Row2
-    Row2 --> Row3
-    Row3 --> Row4
-    Row4 --> Spacer
-    Spacer --> Bottom
-```
-
 Chats window states to show in an interview:
 
 - Cached content while refresh is in progress.
@@ -133,31 +106,6 @@ Chats window states to show in an interview:
 ### Chat Screen UI
 
 ![WhatsApp chat screen mobile UI wireframe](../assets/ui/whatsapp-chat-screen.png)
-
-```mermaid
-flowchart TB
-    subgraph Phone["Mobile Screen: Conversation"]
-        direction TB
-        Status["9:41                     5G 100%"]
-        Header["Back  Alice\nonline                         Call Menu"]
-        Date["Today"]
-        IncomingText["Alice\nCan you review the sync flow?"]
-        OutgoingText["You\nYes, checking delivery states now        read"]
-        IncomingMedia["Alice\nImage thumbnail                     download"]
-        OutgoingMedia["You\nVideo thumbnail                  upload 64%"]
-        Indicator["3 new messages"]
-        Composer["Attach   Message text field        Camera Send"]
-    end
-
-    Status --> Header
-    Header --> Date
-    Date --> IncomingText
-    IncomingText --> OutgoingText
-    OutgoingText --> IncomingMedia
-    IncomingMedia --> OutgoingMedia
-    OutgoingMedia --> Indicator
-    Indicator --> Composer
-```
 
 Chat screen states to show in an interview:
 

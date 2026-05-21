@@ -57,31 +57,6 @@ The staff-level architecture still needs to start from the user-visible surface.
 
 ![Twitter feed staff product surface mobile UI wireframe](../assets/ui/twitter-feed-staff-surface.png)
 
-```mermaid
-flowchart TB
-    subgraph Phone["Mobile Screen: Feed Surface"]
-        direction TB
-        Status["9:41                     5G 100%"]
-        Header["Home Feed"]
-        Tabs["For You              Following"]
-        Freshness["New posts / Pull to refresh"]
-        RankedItem["Ranked Post\nText + media + social context"]
-        RecommendedItem["Recommended Post\nBecause you follow Android topics"]
-        PromotedItem["Promoted Post\nAd label + CTA"]
-        Actions["Reply  Repost  Like  Bookmark  Share"]
-        Paging["Older posts / Pagination cursor"]
-    end
-
-    Status --> Header
-    Header --> Tabs
-    Tabs --> Freshness
-    Freshness --> RankedItem
-    RankedItem --> RecommendedItem
-    RecommendedItem --> PromotedItem
-    PromotedItem --> Actions
-    Actions --> Paging
-```
-
 Staff-level discussion should connect every backend decision to visible behavior: feed open latency, duplicates, stale content, deleted content removal, ranking quality, media availability, pagination consistency, and action correctness.
 
 ## High-Level Architecture
