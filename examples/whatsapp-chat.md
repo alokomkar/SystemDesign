@@ -132,6 +132,8 @@ Chats window states to show in an interview:
 
 ### Chat Screen UI
 
+![WhatsApp chat screen mobile UI wireframe](../assets/ui/whatsapp-chat-screen.png)
+
 ```mermaid
 flowchart TB
     subgraph Phone["Mobile Screen: Conversation"]
