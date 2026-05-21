@@ -36,7 +36,9 @@ Staff-level design answers should additionally show that you can operate across 
 6. [Example: Offline-First Notes App](examples/offline-first-notes.md)
 7. [Practice Scenario: WhatsApp Chats List and Chat Screen](examples/whatsapp-chat.md)
 8. [Practice Scenario: WhatsApp Message Sync](examples/whatsapp-message-sync.md)
-9. [Design Template](templates/mobile-system-design-template.md)
+9. [Practice Scenario: Twitter Feed - Senior Engineer](examples/twitter-feed-senior.md)
+10. [Practice Scenario: Twitter Feed - Staff Engineer](examples/twitter-feed-staff.md)
+11. [Design Template](templates/mobile-system-design-template.md)
 
 ## Senior vs Staff Bar
 
@@ -86,6 +88,8 @@ Use the [template](templates/mobile-system-design-template.md) to practice compl
 │   └── 05-staff-answer-framework.md
 ├── examples/
 │   ├── offline-first-notes.md
+│   ├── twitter-feed-senior.md
+│   ├── twitter-feed-staff.md
 │   ├── whatsapp-chat.md
 │   └── whatsapp-message-sync.md
 ├── templates/
@@ -121,6 +125,8 @@ Optional: enable GitHub Pages with the repository root as the source if you want
 
 - [Design WhatsApp chats list and chat screen.](examples/whatsapp-chat.md)
 - [Design WhatsApp message sync.](examples/whatsapp-message-sync.md)
+- [Design Twitter feed - senior engineer.](examples/twitter-feed-senior.md)
+- [Design Twitter feed - staff engineer.](examples/twitter-feed-staff.md)
 - Design Google Photos upload and backup.
 - Design Uber live ride tracking.
 - Design Netflix downloads for offline playback.
