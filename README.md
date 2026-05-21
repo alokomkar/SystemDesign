@@ -4,6 +4,17 @@ This repository is a practical tutorial for preparing for senior and staff-level
 
 The focus is not only "how do I design an app screen?" It is how to reason about a complete mobile system: product requirements, client architecture, backend contracts, sync, offline behavior, performance, reliability, security, observability, rollout, and long-term maintainability.
 
+## Topics Covered
+
+- [Who This Is For](https://github.com/alokomkar/SystemDesign/tree/main#who-this-is-for)
+- [What Makes Mobile System Design Different](https://github.com/alokomkar/SystemDesign/tree/main#what-makes-mobile-system-design-different)
+- [Tutorial Roadmap](https://github.com/alokomkar/SystemDesign/tree/main#tutorial-roadmap)
+- [Senior vs Staff Bar](https://github.com/alokomkar/SystemDesign/tree/main#senior-vs-staff-bar)
+- [How To Use This Repo](https://github.com/alokomkar/SystemDesign/tree/main#how-to-use-this-repo)
+- [Repository Structure](https://github.com/alokomkar/SystemDesign/tree/main#repository-structure)
+- [Contributing](https://github.com/alokomkar/SystemDesign/tree/main#contributing)
+- [Suggested Practice Problems](https://github.com/alokomkar/SystemDesign/tree/main#suggested-practice-problems)
+
 ## Who This Is For
 
 - Android engineers preparing for senior, senior staff, or staff engineer interviews.
