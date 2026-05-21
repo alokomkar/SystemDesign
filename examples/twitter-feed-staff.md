@@ -56,24 +56,28 @@ Out of scope:
 The staff-level architecture still needs to start from the user-visible surface. The backend feed system exists to power this mobile experience reliably.
 
 ```mermaid
-flowchart LR
-    Home["Home Feed"]
-    ForYou["For You Tab"]
-    Following["Following Tab"]
-    PostCell["Post Cells"]
-    Media["Media Preview / Playback"]
-    Actions["Like / Repost / Bookmark / Reply"]
-    Detail["Post Detail"]
-    Refresh["Refresh and Pagination"]
+flowchart TB
+    subgraph Phone["Mobile Screen: Feed Surface"]
+        direction TB
+        Status["9:41                     5G 100%"]
+        Header["Home Feed"]
+        Tabs["For You              Following"]
+        Freshness["New posts / Pull to refresh"]
+        RankedItem["Ranked Post\nText + media + social context"]
+        RecommendedItem["Recommended Post\nBecause you follow Android topics"]
+        PromotedItem["Promoted Post\nAd label + CTA"]
+        Actions["Reply  Repost  Like  Bookmark  Share"]
+        Paging["Older posts / Pagination cursor"]
+    end
 
-    Home --> ForYou
-    Home --> Following
-    ForYou --> PostCell
-    Following --> PostCell
-    PostCell --> Media
-    PostCell --> Actions
-    PostCell --> Detail
-    Home --> Refresh
+    Status --> Header
+    Header --> Tabs
+    Tabs --> Freshness
+    Freshness --> RankedItem
+    RankedItem --> RecommendedItem
+    RecommendedItem --> PromotedItem
+    PromotedItem --> Actions
+    Actions --> Paging
 ```
 
 Staff-level discussion should connect every backend decision to visible behavior: feed open latency, duplicates, stale content, deleted content removal, ranking quality, media availability, pagination consistency, and action correctness.

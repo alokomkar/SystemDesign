@@ -57,18 +57,21 @@ This wireframe makes the home feed surface concrete before moving into architect
 
 ```mermaid
 flowchart TB
-    subgraph Phone["Android Phone"]
-        Header["Top App Bar: Profile | For You / Following | Search"]
-        Composer["Inline Composer Entry: What's happening?"]
-        Refresh["Pull-to-refresh / New posts pill"]
-        Post1["Post Cell: Avatar | Author | Text | Like/Repost/Reply/Share"]
-        MediaPost["Media Post Cell: Text | Image Grid or Video Preview"]
-        QuotePost["Quote/Repost Cell: Parent context + embedded post"]
-        Promoted["Promoted Post Cell: Label | CTA | Media"]
-        Loading["Bottom Paging Loader / Retry"]
-        Nav["Bottom Nav: Home | Search | Notifications | Messages"]
+    subgraph Phone["Mobile Screen: Home Feed"]
+        direction TB
+        Status["9:41                     5G 100%"]
+        Header["Profile        For You | Following        Search"]
+        Composer["What's happening?"]
+        Refresh["12 new posts"]
+        Post1["Asha @asha\nText post preview over two lines\nReply  Repost  Like  Share"]
+        MediaPost["Mobile Eng @mobile\nImage grid / video preview\nReply  Repost  Like  Share"]
+        QuotePost["Priya reposted\nQuoted post card with parent context"]
+        Promoted["Promoted\nApp install card with media and CTA"]
+        Loading["Loading more... / Retry"]
+        Nav["Home        Search        Notifications        Messages"]
     end
 
+    Status --> Header
     Header --> Composer
     Composer --> Refresh
     Refresh --> Post1
