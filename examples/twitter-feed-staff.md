@@ -55,6 +55,8 @@ Out of scope:
 
 The staff-level architecture still needs to start from the user-visible surface. The backend feed system exists to power this mobile experience reliably.
 
+![Twitter feed staff product surface mobile UI wireframe](../assets/ui/twitter-feed-staff-surface.png)
+
 ```mermaid
 flowchart TB
     subgraph Phone["Mobile Screen: Feed Surface"]
