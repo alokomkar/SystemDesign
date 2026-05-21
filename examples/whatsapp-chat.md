@@ -93,6 +93,8 @@ These wireframes are intentionally simple. Their job is to make the product surf
 
 ### Chats Window UI
 
+![WhatsApp chats list mobile UI wireframe](../assets/ui/whatsapp-chats-list.png)
+
 ```mermaid
 flowchart TB
     subgraph Phone["Mobile Screen: Chats"]
