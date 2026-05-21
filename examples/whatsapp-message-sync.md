@@ -1,8 +1,10 @@
 # Design WhatsApp Message Sync
 
-Design a mobile messaging system where users can send and receive one-to-one and group messages across devices with reliable delivery, offline support, and end-to-end encryption.
+Design the message sync layer for a WhatsApp-like mobile messaging system where users can send and receive text and media messages across devices with reliable delivery, offline support, and end-to-end encryption.
 
-This is a staff-level mobile system design problem because the hard parts are not just sending text over a socket. The hard parts are local durability, delivery state, multi-device sync, offline queues, push behavior, encryption boundaries, media handling, backward compatibility, and operational visibility without violating privacy.
+This chapter focuses on durable message delivery, offline queues, ordering, delivery/read receipts, media upload references, push-triggered sync, multi-device fanout, and backend architecture.
+
+For chat UI surfaces such as the initial chats window and individual chat screen, see [Design WhatsApp Chats List and Chat Screen](whatsapp-chat.md).
 
 ## Scope
 
@@ -12,7 +14,7 @@ In scope:
 - One-to-one messages.
 - Group messages.
 - Text messages.
-- Media message metadata and upload flow.
+- Media messages: images, videos, files, upload progress, and download state.
 - Offline send queue.
 - Multi-device sync.
 - Message delivery states.
@@ -31,13 +33,14 @@ Out of scope:
 ## Functional Requirements
 
 - User can send a text message to another user.
+- User can send image, video, or file messages.
+- User can see media upload, download, failed, retry, and completed states.
 - User can send a message while offline and have it delivered later.
 - User can receive messages while the app is foregrounded.
 - User can receive messages after reopening the app.
 - User can see message states: pending, sent, delivered, read, failed.
 - User can sync message history on a new or secondary device.
 - User can participate in group conversations.
-- User can send media messages with upload progress.
 - User can receive push notifications for new messages.
 - User can delete local message history from a device.
 
@@ -348,6 +351,7 @@ flowchart LR
 The Android app should treat the local database as the UI source of truth.
 
 - Chat UI renders messages from local storage.
+- Chats list renders conversation summaries from local storage.
 - Sending a message first writes a local message row in `pending` state.
 - Outgoing queue durably stores the send attempt.
 - Encryption layer encrypts message payloads before network transmission.
@@ -378,6 +382,55 @@ flowchart TB
     PushHandler --> Repo
     Repo --> VM
 ```
+
+## Text and Media Message Architecture
+
+Text and media share the same durable send pipeline, but media adds preprocessing and resumable upload before the final message envelope can be sent.
+
+```mermaid
+flowchart LR
+    Compose["Compose"]
+    Persist["Persist Local Message"]
+    Type{"Message Type"}
+    TextEncrypt["Encrypt Text Payload"]
+    MediaPrep["Compress / Transcode"]
+    MediaEncrypt["Encrypt Media Blob"]
+    MediaUpload["Resumable Upload"]
+    MediaRef["Store media_ref"]
+    Envelope["Build Encrypted Envelope"]
+    Outbox["Send via Outbox"]
+    Ack["Server Ack"]
+    Render["Render Final State"]
+
+    Compose --> Persist
+    Persist --> Type
+    Type -->|Text| TextEncrypt
+    Type -->|Media| MediaPrep
+    MediaPrep --> MediaEncrypt
+    MediaEncrypt --> MediaUpload
+    MediaUpload --> MediaRef
+    TextEncrypt --> Envelope
+    MediaRef --> Envelope
+    Envelope --> Outbox
+    Outbox --> Ack
+    Ack --> Render
+```
+
+Text-specific concerns:
+
+- Keep send path fast.
+- Preserve drafts.
+- Deduplicate sends with `client_message_id`.
+- Support retries without duplicating message bubbles.
+
+Media-specific concerns:
+
+- Persist selected media URI and processing state.
+- Respect Android scoped storage permissions.
+- Compress or transcode without blocking the main thread.
+- Use resumable upload for large files.
+- Store upload progress and failure state.
+- Avoid auto-downloading large media on cellular if user settings disallow it.
 
 ## Core Data Model
 
@@ -422,6 +475,28 @@ payload
 attempt_count
 next_attempt_at
 created_at
+```
+
+Media item:
+
+```text
+media_id
+local_message_id
+server_media_id nullable
+local_uri nullable
+media_type: image | video | file
+mime_type
+size_bytes
+width nullable
+height nullable
+duration_ms nullable
+thumbnail_local_uri nullable
+upload_state: local | processing | uploading | uploaded | failed
+download_state: not_downloaded | downloading | downloaded | failed
+upload_progress
+download_progress
+encrypted_media_ref nullable
+failure_reason nullable
 ```
 
 Message envelope stored on server:

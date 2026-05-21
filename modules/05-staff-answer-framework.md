@@ -1,4 +1,4 @@
-# 05. Staff-Level Design Answer Framework
+# 05. Senior and Staff Design Answer Framework
 
 Use this framework to answer mobile system design questions in interviews.
 
@@ -92,7 +92,9 @@ Cover:
 - Error model.
 - Backward compatibility.
 
-Staff-level detail: explain which fields are server-authoritative and which are client-derived.
+Senior-level detail: explain how the client reads, writes, caches, and renders the data.
+
+Staff-level detail: explain which fields are server-authoritative, which are client-derived, and how ownership changes across teams and releases.
 
 ## 6. Design Client State
 
@@ -236,4 +238,3 @@ Observability and rollout:
 Tradeoffs:
 - ...
 ```
-

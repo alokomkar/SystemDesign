@@ -1,12 +1,12 @@
-# Mobile System Design for Android Staff Engineers
+# Mobile System Design for Senior and Staff Android Engineers
 
-This repository is a practical tutorial for preparing for staff-level Android and mobile system design interviews.
+This repository is a practical tutorial for preparing for senior and staff-level Android and mobile system design interviews.
 
 The focus is not only "how do I design an app screen?" It is how to reason about a complete mobile system: product requirements, client architecture, backend contracts, sync, offline behavior, performance, reliability, security, observability, rollout, and long-term maintainability.
 
 ## Who This Is For
 
-- Android engineers preparing for senior staff or staff engineer interviews.
+- Android engineers preparing for senior, senior staff, or staff engineer interviews.
 - Mobile leads who want a repeatable system design framework.
 - Backend or full-stack engineers who want to understand mobile-specific constraints.
 - Engineers designing mobile experiences that must work under real-world device, network, privacy, and scale constraints.
@@ -22,7 +22,9 @@ Mobile clients run in an environment the system does not fully control.
 - Client bugs can be expensive because rollback is harder than server rollback.
 - Privacy, platform policy, and permission models are part of the architecture.
 
-Staff-level design answers should show that you can operate across this full system, not just within one codebase.
+Senior-level design answers should show that you can turn ambiguous product behavior into clear client architecture, APIs, data models, and failure handling.
+
+Staff-level design answers should additionally show that you can operate across the full system, not just within one codebase.
 
 ## Tutorial Roadmap
 
@@ -30,14 +32,24 @@ Staff-level design answers should show that you can operate across this full sys
 2. [Mobile Moving Parts](modules/02-mobile-moving-parts.md)
 3. [Functional Requirements](modules/03-functional-requirements.md)
 4. [Non-Functional Requirements](modules/04-non-functional-requirements.md)
-5. [Staff-Level Design Answer Framework](modules/05-staff-answer-framework.md)
+5. [Senior and Staff Design Answer Framework](modules/05-staff-answer-framework.md)
 6. [Example: Offline-First Notes App](examples/offline-first-notes.md)
-7. [Practice Scenario: WhatsApp Message Sync](examples/whatsapp-message-sync.md)
-8. [Design Template](templates/mobile-system-design-template.md)
+7. [Practice Scenario: WhatsApp Chats List and Chat Screen](examples/whatsapp-chat.md)
+8. [Practice Scenario: WhatsApp Message Sync](examples/whatsapp-message-sync.md)
+9. [Design Template](templates/mobile-system-design-template.md)
 
-## The Staff Engineer Bar
+## Senior vs Staff Bar
 
-A strong staff-level mobile system design answer demonstrates:
+A strong senior-level mobile system design answer demonstrates:
+
+- Product clarity: you identify core users, flows, and edge cases.
+- Mobile architecture depth: you design screens, state, persistence, networking, and background work coherently.
+- API thinking: you define practical contracts with pagination, errors, retries, and versioning.
+- Reliability basics: you handle offline, process death, retries, and duplicate operations.
+- Performance awareness: you consider startup, scrolling, rendering, memory, battery, and app size.
+- Testing judgment: you identify useful unit, integration, UI, and manual test coverage.
+
+A strong staff-level mobile system design answer adds:
 
 - Product judgment: you clarify goals, users, constraints, and success metrics.
 - Systems thinking: you reason across client, backend, data, infra, release, and operations.
@@ -74,6 +86,7 @@ Use the [template](templates/mobile-system-design-template.md) to practice compl
 │   └── 05-staff-answer-framework.md
 ├── examples/
 │   ├── offline-first-notes.md
+│   ├── whatsapp-chat.md
 │   └── whatsapp-message-sync.md
 ├── templates/
 │   └── mobile-system-design-template.md
@@ -88,7 +101,7 @@ The simplest publishing path is to create a GitHub repository and push this fold
 Suggested repo name:
 
 ```text
-mobile-system-design-android-staff-engineer
+mobile-system-design-android-senior-staff
 ```
 
 Basic setup:
@@ -98,7 +111,7 @@ git init
 git add .
 git commit -m "Add mobile system design tutorial"
 git branch -M main
-git remote add origin git@github.com:<your-user>/mobile-system-design-android-staff-engineer.git
+git remote add origin git@github.com:<your-user>/mobile-system-design-android-senior-staff.git
 git push -u origin main
 ```
 
@@ -106,6 +119,7 @@ Optional: enable GitHub Pages with the repository root as the source if you want
 
 ## Suggested Practice Problems
 
+- [Design WhatsApp chats list and chat screen.](examples/whatsapp-chat.md)
 - [Design WhatsApp message sync.](examples/whatsapp-message-sync.md)
 - Design Google Photos upload and backup.
 - Design Uber live ride tracking.

@@ -2,7 +2,7 @@
 
 System design is the process of turning an ambiguous product goal into a technical architecture that satisfies real constraints.
 
-At staff level, the goal is not to produce one perfect diagram. The goal is to show structured reasoning, good judgment, and awareness of failure modes.
+At senior and staff levels, the goal is not to produce one perfect diagram. The goal is to show structured reasoning, good judgment, and awareness of failure modes.
 
 ## Core Questions
 
@@ -82,11 +82,22 @@ For mobile, always ask:
 - What can be changed server-side without an app update?
 - What needs a kill switch?
 
-## Staff-Level Signal
+## Senior-Level Signal
 
 A junior answer often describes only the happy path.
 
 A senior answer usually includes component boundaries, APIs, and data flow.
+
+Senior-level signal includes:
+
+- Clear product scope.
+- Screen-level flows.
+- Client architecture.
+- Data model and API contracts.
+- Offline and error handling.
+- Performance and testing considerations.
+
+## Staff-Level Signal
 
 A staff answer adds:
 
@@ -97,4 +108,3 @@ A staff answer adds:
 - Release safety.
 - Cross-team ownership.
 - Long-term maintainability.
-
