@@ -87,6 +87,75 @@ flowchart LR
     Sync --> Chat
 ```
 
+## UI Wireframes
+
+These wireframes are intentionally simple. Their job is to make the product surface concrete before discussing architecture.
+
+### Chats Window UI
+
+```mermaid
+flowchart TB
+    subgraph Phone["Android Phone"]
+        Header["Top App Bar: WhatsApp | Camera | Search | Menu"]
+        Tabs["Chats | Updates | Calls"]
+        Search["Search or archived entry point"]
+        Row1["Pinned Chat Row: Avatar | Alice | Last message | 2 unread | 10:42"]
+        Row2["Group Chat Row: Avatar | Android Study Group | Draft: sync diagram | muted"]
+        Row3["Media Preview Row: Avatar | Bob | Photo | delivered checkmarks"]
+        Row4["Archived / Older Conversations"]
+        Fab["New Chat Floating Action Button"]
+    end
+
+    Header --> Tabs
+    Tabs --> Search
+    Search --> Row1
+    Row1 --> Row2
+    Row2 --> Row3
+    Row3 --> Row4
+    Row4 --> Fab
+```
+
+Chats window states to show in an interview:
+
+- Cached content while refresh is in progress.
+- Empty state for a new user.
+- Offline banner when refresh fails.
+- Inline unread count updates.
+- Draft and pending-message indicators.
+
+### Chat Screen UI
+
+```mermaid
+flowchart TB
+    subgraph Phone["Android Phone"]
+        Header["Chat Header: Back | Avatar | Alice | Online/Last seen | Call/Menu"]
+        Date["Date Separator: Today"]
+        IncomingText["Incoming Bubble: Text message"]
+        OutgoingText["Outgoing Bubble: Text message | sent/delivered/read state"]
+        IncomingMedia["Incoming Media Bubble: Image thumbnail | download icon"]
+        OutgoingMedia["Outgoing Media Bubble: Video thumbnail | upload progress | retry"]
+        NewIndicator["New Messages Indicator"]
+        Composer["Composer: Attachment | Text Field | Camera | Mic/Send"]
+    end
+
+    Header --> Date
+    Date --> IncomingText
+    IncomingText --> OutgoingText
+    OutgoingText --> IncomingMedia
+    IncomingMedia --> OutgoingMedia
+    OutgoingMedia --> NewIndicator
+    NewIndicator --> Composer
+```
+
+Chat screen states to show in an interview:
+
+- Initial local messages while sync catches up.
+- Loading older messages at the top.
+- User scrolled up while new messages arrive.
+- Pending outgoing text message.
+- Media upload progress and retry.
+- Media download placeholder on cellular or data saver.
+
 ## Chats Window
 
 The chats window is a summary projection over conversations, messages, drafts, unread state, and user preferences. It should not decrypt or load full message history just to render rows.
@@ -440,4 +509,3 @@ Ownership rules:
 ## Staff Engineer Note
 
 This chapter intentionally focuses on the visible chat experience. For staff-level interviews, continue into [Design WhatsApp Message Sync](whatsapp-message-sync.md) and explain how the UI states here are powered by durable sync, end-to-end encryption, multi-device fanout, push wakeups, receipts, observability, and rollout safety.
-

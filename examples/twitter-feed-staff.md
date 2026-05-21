@@ -51,6 +51,33 @@ Out of scope:
 - Backend APIs must support older app versions.
 - Observability should allow debugging feed quality and reliability without exposing sensitive content.
 
+## Product Surface Context
+
+The staff-level architecture still needs to start from the user-visible surface. The backend feed system exists to power this mobile experience reliably.
+
+```mermaid
+flowchart LR
+    Home["Home Feed"]
+    ForYou["For You Tab"]
+    Following["Following Tab"]
+    PostCell["Post Cells"]
+    Media["Media Preview / Playback"]
+    Actions["Like / Repost / Bookmark / Reply"]
+    Detail["Post Detail"]
+    Refresh["Refresh and Pagination"]
+
+    Home --> ForYou
+    Home --> Following
+    ForYou --> PostCell
+    Following --> PostCell
+    PostCell --> Media
+    PostCell --> Actions
+    PostCell --> Detail
+    Home --> Refresh
+```
+
+Staff-level discussion should connect every backend decision to visible behavior: feed open latency, duplicates, stale content, deleted content removal, ranking quality, media availability, pagination consistency, and action correctness.
+
 ## High-Level Architecture
 
 ```mermaid
@@ -407,4 +434,3 @@ Rollout plan:
 - How would you support regional outages?
 - How would you design feed ranking explainability?
 - How would you prevent duplicate posts across organic, recommended, and promoted sources?
-

@@ -60,6 +60,7 @@ A strong senior-level mobile system design answer demonstrates:
 - API thinking: you define practical contracts with pagination, errors, retries, and versioning.
 - Reliability basics: you handle offline, process death, retries, and duplicate operations.
 - Performance awareness: you consider startup, scrolling, rendering, memory, battery, and app size.
+- UI visualization: you can sketch the app surface, states, and transitions before diving into internals.
 - Testing judgment: you identify useful unit, integration, UI, and manual test coverage.
 
 A strong staff-level mobile system design answer adds:
@@ -80,9 +81,10 @@ For each design problem:
 3. Define the mobile client responsibilities.
 4. Define backend/API responsibilities.
 5. Design data models and state transitions.
-6. Plan offline, sync, caching, retries, and conflict handling.
-7. Address security, privacy, abuse, observability, rollout, and testing.
-8. Call out tradeoffs and future extensions.
+6. Add UI wireframes for key screens and states where useful.
+7. Plan offline, sync, caching, retries, and conflict handling.
+8. Address security, privacy, abuse, observability, rollout, and testing.
+9. Call out tradeoffs and future extensions.
 
 Use the [template](templates/mobile-system-design-template.md) to practice complete answers.
 
@@ -130,6 +132,7 @@ Good PRs include:
 
 - New mobile system design examples.
 - Senior vs staff-level interview walkthroughs.
+- UI wireframes that help readers visualize the app being designed.
 - Better architecture diagrams or Mermaid flowcharts.
 - Corrections that improve technical accuracy.
 - Android-specific tradeoffs, APIs, storage models, or testing strategies.

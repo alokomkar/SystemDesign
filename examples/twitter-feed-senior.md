@@ -51,6 +51,44 @@ Out of scope:
 - Media prefetch should be bounded.
 - The UI should tolerate stale data and reconcile after refresh.
 
+## UI Wireframe
+
+This wireframe makes the home feed surface concrete before moving into architecture, pagination, and caching.
+
+```mermaid
+flowchart TB
+    subgraph Phone["Android Phone"]
+        Header["Top App Bar: Profile | For You / Following | Search"]
+        Composer["Inline Composer Entry: What's happening?"]
+        Refresh["Pull-to-refresh / New posts pill"]
+        Post1["Post Cell: Avatar | Author | Text | Like/Repost/Reply/Share"]
+        MediaPost["Media Post Cell: Text | Image Grid or Video Preview"]
+        QuotePost["Quote/Repost Cell: Parent context + embedded post"]
+        Promoted["Promoted Post Cell: Label | CTA | Media"]
+        Loading["Bottom Paging Loader / Retry"]
+        Nav["Bottom Nav: Home | Search | Notifications | Messages"]
+    end
+
+    Header --> Composer
+    Composer --> Refresh
+    Refresh --> Post1
+    Post1 --> MediaPost
+    MediaPost --> QuotePost
+    QuotePost --> Promoted
+    Promoted --> Loading
+    Loading --> Nav
+```
+
+Feed UI states to cover in an interview:
+
+- Cached feed while refresh is running.
+- Initial loading state.
+- Pull-to-refresh loading state.
+- Inline next-page retry.
+- Offline banner with cached content.
+- Optimistic like/bookmark/repost state.
+- Media loading placeholder and video playback state.
+
 ## High-Level Mobile Architecture
 
 ```mermaid
@@ -349,4 +387,3 @@ Design choices:
 - Optimistic actions feel fast but need durable queues and conflict handling.
 - Media prefetch improves UX but can hurt battery, memory, and data usage.
 - A single feed endpoint is simpler for the app, but backend teams may need a BFF to shield the client from ranking and aggregation complexity.
-
